@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新年快乐！🎉🎊 在这辞旧迎新的美好时刻，愿你和你的宝贝在新的一年里，健康快乐，笑容常伴！愿你们的家充满温馨与幸福，孩子们的每一天都像童话般美好，成长的道路上充满惊喜与收获。愿你们一家人携手迎接更多的美好时光，幸福满满，爱意浓浓！新年新气象，愿所有的美好都如约而至！🌟祝福你们，新年快乐，阖家幸福！</title>
+    <title>新年快乐</title>
     <style>
         body {
             margin: 0;
@@ -15,10 +15,27 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
+            text-align: center;
         }
         h1 {
             font-size: 4em;
             text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
+            animation: blink 2s infinite;
+        }
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            max-width: 80%;
+            animation: blink 3s infinite;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
         }
         canvas {
             position: absolute;
@@ -30,7 +47,9 @@
 </head>
 <body>
     <h1>新年快乐！</h1>
-    <h2>新年快乐！🎉🎊 在这辞旧迎新的美好时刻，愿你和你的宝贝在新的一年里，健康快乐，笑容常伴！愿你们的家充满温馨与幸福，孩子们的每一天都像童话般美好，成长的道路上充满惊喜与收获。愿你们一家人携手迎接更多的美好时光，幸福满满，爱意浓浓！新年新气象，愿所有的美好都如约而至！🌟祝福你们，新年快乐，阖家幸福！</h2>
+    <div class="message">
+        新年快乐！🎉🎊 在这辞旧迎新的美好时刻，愿你和你的宝贝在新的一年里，健康快乐，笑容常伴！愿你们的家充满温馨与幸福，孩子们的每一天都像童话般美好，成长的道路上充满惊喜与收获。愿你们一家人携手迎接更多的美好时光，幸福满满，爱意浓浓！新年新气象，愿所有的美好都如约而至！🌟祝福你们，新年快乐，阖家幸福！
+    </div>
     <canvas id="fireworks"></canvas>
     <script>
         const canvas = document.getElementById('fireworks');
@@ -71,7 +90,7 @@
             };
 
             this.explode = function() {
-                for (let i = 0; i < 100; i++) { // 增加粒子数量
+                for (let i = 0; i < 100; i++) {
                     particles.push(new Particle(this.x, this.y, this.color));
                 }
             };
@@ -81,9 +100,9 @@
             this.x = x;
             this.y = y;
             this.color = color;
-            this.radius = Math.random() * 3; // 增加粒子大小
+            this.radius = Math.random() * 3;
             this.velocity = {
-                x: (Math.random() - 0.5) * 10, // 增加粒子速度
+                x: (Math.random() - 0.5) * 10,
                 y: (Math.random() - 0.5) * 10
             };
             this.gravity = 0.05;
@@ -93,7 +112,7 @@
                 this.velocity.y += this.gravity;
                 this.x += this.velocity.x;
                 this.y += this.velocity.y;
-                this.opacity -= 0.02; // 加快粒子消失速度
+                this.opacity -= 0.02;
             };
 
             this.draw = function() {
@@ -114,7 +133,7 @@
             ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if (Math.random() < 0.1) { // 增加烟花生成频率
+            if (Math.random() < 0.1) {
                 fireworks.push(new Firework());
             }
 
